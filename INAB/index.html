@@ -58,7 +58,9 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 
 .wordmark{position:relative;margin:0;font-weight:400;font-family:var(--f-serif);font-size:calc(150 * var(--u));line-height:.82;
   display:flex;flex-wrap:wrap;align-items:baseline;column-gap:calc(42 * var(--u))}
-.wordmark .w{display:inline-block;-webkit-background-clip:text;background-clip:text;color:transparent;filter:url(#innerHi)}
+.wordmark .w{display:inline-block;-webkit-background-clip:text;background-clip:text;color:transparent;filter:url(#innerHi);
+  /* 글자가 줄 높이보다 위로 솟는 부분까지 색이 칠해지도록 여유를 주고, 위치는 그대로 유지 */
+  padding:.22em .06em .14em;margin:-.22em -.06em -.14em}
 /* INAB: #ece6f3 + 그레이디언트 오버레이(표준 10%, #65469f→투명, 135°) + 내부 그림자 */
 .wordmark .inab{background-image:linear-gradient(135deg,rgba(101,70,159,.10),rgba(101,70,159,0)),linear-gradient(var(--text),var(--text))}
 /* Shop: #6d48b3 + 그레이디언트 오버레이(오버레이 10%, 흰색, -45° 반전) + 내부 그림자 */
@@ -160,7 +162,7 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 
 <!-- 내부 그림자: 선형 닷지(추가), 흰색 25%, 각도 135°, 거리 1px, 크기 0 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <filter id="innerHi" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB">
+  <filter id="innerHi" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
     <feOffset in="SourceAlpha" dx="1" dy="1" result="shift"/>
     <feComposite in="SourceAlpha" in2="shift" operator="out" result="edge"/>
     <feFlood flood-color="#ffffff" flood-opacity=".25"/>
