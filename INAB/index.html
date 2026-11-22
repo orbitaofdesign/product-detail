@@ -6,10 +6,6 @@
 <title>INAB Shop</title>
 <meta name="description" content="표정과 움직임, 헤어의 결까지 설계합니다. 버추얼 캐릭터의 인상과 감정을 세심하게 완성합니다.">
 <link rel="preload" href="fonts/Cafe24ClassicType-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Amanda 폰트 파일을 받기 전까지 쓰는 대체 필기체 -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap">
 <style>
 @font-face{font-family:"Cafe24 ClassicType";src:url(fonts/Cafe24ClassicType-latin.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Paperlogy";src:url(fonts/Paperlogy-4Regular.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -25,13 +21,12 @@
   --script:#784fbb;    /* Inabi 필기체 */
   --night:#15101c;     /* 배경 아래로 이어지는 바탕색 */
   --f-serif:"Cafe24 ClassicType",Georgia,serif;
-  --f-script:"Amanda","Pinyon Script",cursive;
   --f-sans:"Paperlogy","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --vh:100vh;
   --u:min(calc(100vw / 1920), calc(var(--vh) / 1080));
 }
 @supports (height:100svh){:root{--vh:100svh}}
-@media (max-aspect-ratio:4/5){:root{--u:calc(100vw / 980)}}
+@media (max-aspect-ratio:4/5){:root{--u:calc(100vw / 1080)}}
 
 *{box-sizing:border-box}
 html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);font-family:var(--f-sans)}
@@ -47,7 +42,7 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 @media (max-width:900px){.bg{background-image:url(bg-1280.webp)}}
 @media (min-width:2200px){.bg{background-image:url(bg-3840.webp)}}
 /* 왼쪽 아래 모서리 중심 방사형 그라데이션 #65469f → 투명 */
-.glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(85% 100% at 0% 100%,var(--deep) 0%,rgba(101,70,159,.82) 32%,rgba(101,70,159,.35) 62%,rgba(101,70,159,0) 100%)}
+.glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(85% 100% at 0% 100%,rgba(101,70,159,.9) 0%,rgba(101,70,159,.62) 32%,rgba(101,70,159,.22) 62%,rgba(101,70,159,0) 100%)}
 .sweep{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0;
   background:linear-gradient(115deg,transparent 40%,rgba(236,230,243,.28) 48%,transparent 56%);background-size:250% 100%;background-position:120% 0}
 
@@ -61,15 +56,15 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 .hero{position:absolute;z-index:2;left:max(calc(105 * var(--u)),20px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));
   bottom:calc(max(calc(48 * var(--u)),24px) + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-start}
 
-.wordmark{position:relative;margin:0;font-weight:400;font-family:var(--f-serif);font-size:calc(153 * var(--u));line-height:.82;
+.wordmark{position:relative;margin:0;font-weight:400;font-family:var(--f-serif);font-size:calc(150 * var(--u));line-height:.82;
   display:flex;flex-wrap:wrap;align-items:baseline;column-gap:calc(42 * var(--u))}
 .wordmark .w{display:inline-block;-webkit-background-clip:text;background-clip:text;color:transparent;filter:url(#innerHi)}
 /* INAB: #ece6f3 + 그레이디언트 오버레이(표준 10%, #65469f→투명, 135°) + 내부 그림자 */
 .wordmark .inab{background-image:linear-gradient(135deg,rgba(101,70,159,.10),rgba(101,70,159,0)),linear-gradient(var(--text),var(--text))}
 /* Shop: #6d48b3 + 그레이디언트 오버레이(오버레이 10%, 흰색, -45° 반전) + 내부 그림자 */
-.wordmark .shop{background-image:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,0)),linear-gradient(var(--purple),var(--purple));background-blend-mode:overlay,normal}
-.wordmark .script{position:absolute;z-index:1;left:calc(-28 * var(--u));top:calc(18 * var(--u));font-family:var(--f-script);font-size:calc(118 * var(--u));line-height:1;
-  color:var(--script);transform:rotate(-7deg);transform-origin:left center;white-space:nowrap;pointer-events:none;font-weight:400}
+.wordmark .shop{background-image:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,0)),linear-gradient(var(--purple),var(--purple));background-blend-mode:overlay,normal;letter-spacing:-.03em}
+/* Inabi(Amanda #784fbb): PSD에서 내보낸 PNG를 원래 위치에 */
+.wordmark .script{position:absolute;z-index:1;left:calc(-32 * var(--u));top:calc(-11.5 * var(--u));width:calc(447 * var(--u));height:auto;max-width:none;pointer-events:none}
 
 .links{display:flex;align-items:center;gap:calc(30 * var(--u));flex-wrap:wrap;margin-top:calc(38 * var(--u))}
 /* 포트폴리오 보기: #6d48b3 + 내부 그림자(흰색 25%, 1px, 135°) + 그레이디언트 오버레이(오버레이 10%) */
@@ -186,7 +181,7 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
       <h1 class="wordmark" aria-label="INAB Shop">
         <span class="w inab" aria-hidden="true">INAB</span>
         <span class="w shop" aria-hidden="true">Shop</span>
-        <span class="script" aria-hidden="true">Inabi</span>
+        <img class="script" src="inabi.png" alt="" aria-hidden="true">
       </h1>
       <div class="links">
         <a class="cta" href="#portfolio">포트폴리오 보기
