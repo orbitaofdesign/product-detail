@@ -71,3 +71,10 @@ img{max-width:100%}
 .foot .links{display:flex;gap:16px;flex-wrap:wrap}
 .foot .links a{color:var(--muted);text-decoration:none}
 .foot .links a:hover{color:var(--text)}
+
+/* 영문 큰 제목: 인트로 INAB와 같은 효과
+   #ece6f3 + 그레이디언트 오버레이(표준 10%, #65469f→투명, 135°) + 내부 그림자(흰색 25%, 1px, 135°) */
+.sec-head h2,.cta-band h2,.pf-title{
+  width:fit-content;color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:linear-gradient(135deg,rgba(101,70,159,.10),rgba(101,70,159,0)),linear-gradient(#ece6f3,#ece6f3);
+  filter:url(#innerHi);padding:.2em .06em .14em;margin:-.2em -.06em -.14em}

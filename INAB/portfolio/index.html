@@ -17,7 +17,7 @@
   -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 55%,transparent 100%)}
 .pf-hero .in{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
 .pf-hero .back{margin-bottom:clamp(16px,3vw,36px)}
-.pf-title{position:relative;margin:0;font-family:var(--f-serif);font-weight:400;font-size:clamp(64px,11vw,150px);line-height:.85;color:var(--text);width:fit-content}
+.pf-title{position:relative;font-family:var(--f-serif);font-weight:400;font-size:clamp(64px,11vw,150px);line-height:.85;width:fit-content}
 .pf-title img{position:absolute;left:-3%;top:4%;width:46%;pointer-events:none}
 .pf-hero p{margin:0;font-size:clamp(16px,1.6vw,20px);font-weight:500;color:var(--muted)}
 .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;width:fit-content}
@@ -50,6 +50,16 @@
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="innerHi" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+    <feOffset in="SourceAlpha" dx="1" dy="1" result="shift"/>
+    <feComposite in="SourceAlpha" in2="shift" operator="out" result="edge"/>
+    <feFlood flood-color="#ffffff" flood-opacity=".25"/>
+    <feComposite in2="edge" operator="in" result="hi"/>
+    <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="hi"/></feMerge>
+  </filter>
+</svg>
+
 
 <header class="topnav" id="topnav">
   <div class="in">
