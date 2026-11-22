@@ -29,11 +29,18 @@ img{max-width:100%}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:var(--f-serif);font-size:22px;letter-spacing:.04em}
 .brand img{width:34px;height:34px}
 .brand em{font-style:normal;color:#8f6ad6}
-.topnav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(14px,3vw,32px)}
-.topnav a.link{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;transition:color .2s}
+.topnav ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:clamp(14px,2vw,26px)}
+.topnav a.link{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;white-space:nowrap;transition:color .2s}
 .topnav a.link:hover,.topnav a.link[aria-current="page"]{color:var(--text)}
 .topnav a.link.pf{color:var(--text);background:var(--purple);padding:7px 14px;border-radius:999px;box-shadow:inset 1px 1px 0 rgba(255,255,255,.25)}
-@media (max-width:520px){.brand span{display:none}.topnav a.link{font-size:14px}}
+@media (max-width:1100px){
+  .topnav nav{min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 85%,transparent);mask-image:linear-gradient(to right,#000 85%,transparent)}
+  .topnav nav::-webkit-scrollbar{display:none}
+  .topnav ul{gap:18px;padding-right:28px}
+  .topnav li{flex:none}
+  .brand span{display:none}
+}
+@media (max-width:520px){.topnav a.link{font-size:14px}}
 
 /* ---------- 섹션 공통 ---------- */
 .sec{padding-block:clamp(72px,10vw,128px);padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
@@ -58,6 +65,9 @@ img{max-width:100%}
 
 /* ---------- 푸터 ---------- */
 .foot{border-top:1px solid var(--line);padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
-.foot .in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.foot .in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 28px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
 .foot .brand{font-size:18px}
 .foot .brand img{width:28px;height:28px}
+.foot .links{display:flex;gap:16px;flex-wrap:wrap}
+.foot .links a{color:var(--muted);text-decoration:none}
+.foot .links a:hover{color:var(--text)}
