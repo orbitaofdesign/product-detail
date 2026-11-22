@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>INAB Shop</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Pinyon+Script&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 배경 그림은 화면을 꽉 채우고(가장자리만 잘림), 로고 글자·버튼·문구는 코드로 왼쪽 아래에 고정 → 어떤 비율에서도 온전히 보임 */
+:root{
+  color-scheme:dark;
+  --night:#0D0817; --plum:#1B1030; --violet:#7B55D6; --violet-hi:#9672EA; --lilac:#E4D8FA; --white:#FFFFFF; --muted:#B4A4D2;
+  --f-serif:"Bodoni Moda","Didot",Georgia,serif;
+  --f-script:"Pinyon Script","Snell Roundhand",cursive;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --vh:100vh;
+}
+@supports (height:100svh){:root{--vh:100svh}}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--white);font-family:var(--f-body)}
+:focus-visible{outline:2px solid var(--lilac);outline-offset:3px}
+
+/* ---------- 인트로 ---------- */
+.intro{position:relative;height:var(--vh);min-height:560px;overflow:hidden;background:var(--night);isolation:isolate}
+.bg{position:absolute;inset:0;background:url(bg.webp) 32% 30% / cover no-repeat;transform-origin:32% 40%}
+.shade{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(13,8,23,.55),rgba(13,8,23,0) 38%),
+             radial-gradient(90% 70% at 0% 100%,rgba(70,40,140,.35),transparent 70%)}
+.sweep{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0;
+  background:linear-gradient(115deg,transparent 40%,rgba(228,216,250,.3) 48%,transparent 56%);background-size:250% 100%;background-position:120% 0}
+
+/* 오른쪽 위 나비 로고 */
+.logo-btn{position:absolute;z-index:3;
+  top:calc(clamp(16px,2.4vw,40px) + env(safe-area-inset-top,0px));right:calc(clamp(16px,2.4vw,40px) + env(safe-area-inset-right,0px));
+  width:clamp(48px,3.8vw,72px);aspect-ratio:1;border-radius:50%;border:clamp(2px,.16vw,3px) solid var(--lilac);display:grid;place-items:center;transition:box-shadow .3s}
+.logo-btn:hover{box-shadow:0 0 24px rgba(150,114,234,.7)}
+.logo-btn svg{width:56%;height:auto}
+
+/* 왼쪽 아래 메인 카피 */
+.hero{position:absolute;z-index:2;left:max(clamp(20px,5.5vw,108px),env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));
+  bottom:calc(clamp(28px,4vw,72px) + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-start;gap:clamp(14px,1.4vw,26px)}
+.wordmark{position:relative;margin:0;font-weight:400;line-height:.9;font-size:clamp(60px,8.2vw,168px);display:flex;flex-wrap:wrap;column-gap:.32em;align-items:baseline}
+.wordmark .inab{position:relative;font-family:var(--f-serif);font-weight:600;color:var(--white);letter-spacing:-.01em;
+  text-shadow:0 2px 0 rgba(140,110,210,.5),0 10px 30px rgba(20,8,40,.35)}
+.wordmark .shop{font-family:var(--f-serif);font-weight:700;color:var(--violet);letter-spacing:-.01em;text-shadow:0 0 1px rgba(255,255,255,.25)}
+.wordmark .script{position:absolute;left:-.14em;top:.22em;font-family:var(--f-script);font-size:.78em;line-height:1;color:rgba(150,114,234,.85);transform:rotate(-8deg);white-space:nowrap;pointer-events:none}
+.wordmark .script::after{content:"";position:absolute;left:.4em;right:-1.4em;bottom:.3em;height:.035em;background:linear-gradient(90deg,rgba(150,114,234,0),rgba(150,114,234,.9) 30%,rgba(150,114,234,.2));border-radius:1em;transform:rotate(-3deg)}
+
+.links{display:flex;align-items:center;gap:clamp(10px,1.1vw,20px);flex-wrap:wrap}
+.cta{display:inline-flex;align-items:center;gap:.7em;text-decoration:none;color:var(--white);font-weight:700;font-size:clamp(14px,.95vw,18px);
+  padding:.8em 1.5em;border-radius:999px;background:linear-gradient(180deg,var(--violet-hi),#6640C8);border:2px solid rgba(228,216,250,.55);
+  box-shadow:0 8px 24px rgba(60,20,140,.35);transition:transform .2s,box-shadow .2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(110,70,220,.55)}
+.cta svg{width:.6em;height:.9em}
+.icon{width:clamp(40px,2.7vw,54px);aspect-ratio:1;border-radius:50%;display:block;transition:transform .2s,box-shadow .2s}
+.icon img{width:100%;height:100%;display:block;border-radius:50%}
+.icon:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(150,114,234,.8)}
+.copy{display:flex;flex-direction:column;gap:.4em}
+.copy strong{font-weight:700;font-size:clamp(17px,1.45vw,28px);letter-spacing:-.01em;text-shadow:0 2px 12px rgba(13,8,23,.5)}
+.copy span{font-size:clamp(13px,.92vw,17px);color:rgba(255,255,255,.86)}
+
+.scroll-cue{position:absolute;z-index:2;right:calc(clamp(20px,2.6vw,48px) + env(safe-area-inset-right,0px));bottom:calc(clamp(28px,4vw,72px) + env(safe-area-inset-bottom,0px));
+  display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:.3em;color:var(--lilac);text-decoration:none;writing-mode:vertical-rl}
+.scroll-cue i{width:1px;height:40px;background:linear-gradient(var(--lilac),transparent);animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- 로더 ---------- */
+.veil{position:absolute;inset:0;z-index:10;display:grid;place-items:center;background:radial-gradient(60% 60% at 50% 50%,var(--plum),var(--night));clip-path:circle(150% at 50% 50%)}
+.mark{display:flex;flex-direction:column;align-items:center;gap:18px}
+.mark .ring{width:96px;height:96px;border-radius:50%;border:3px solid var(--lilac);display:grid;place-items:center;position:relative}
+.mark .ring::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(140,98,240,.5);animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{from{transform:scale(.85);opacity:1}to{transform:scale(1.35);opacity:0}}
+.mark svg{width:54px;height:auto;overflow:visible}
+.mark .wr,.mark .wl{transform-box:view-box;transform-origin:85px 60px;animation:flap 2.4s ease-in-out infinite}
+@keyframes flap{50%{transform:scaleX(.55)}}
+.mark .name{font-family:var(--f-serif);font-size:20px;letter-spacing:.42em;padding-left:.42em}
+.mark .bar{width:120px;height:1px;background:rgba(246,241,255,.18);overflow:hidden}
+.mark .bar b{display:block;height:100%;background:var(--lilac);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.skip{position:absolute;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));font:inherit;font-size:12px;letter-spacing:.1em;
+  color:var(--muted);background:transparent;border:1px solid rgba(180,164,210,.35);border-radius:999px;padding:6px 14px;cursor:pointer}
+.skip:hover{color:var(--white);border-color:var(--lilac)}
+
+/* ---------- 등장 연출 (JS가 .anim을 붙였을 때만) ---------- */
+.anim .bg{transform:scale(1.14);filter:blur(10px) brightness(.5)}
+.anim .hero > *,.anim .logo-btn,.anim .scroll-cue{opacity:0}
+.anim .wordmark .script{clip-path:inset(0 100% 0 0)}
+.anim.open .veil{clip-path:circle(0% at 50% 50%);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1)}
+.anim.open .veil .mark{opacity:0;transform:scale(.9);transition:opacity .4s,transform .6s}
+.anim.open .bg{animation:reveal 2.6s cubic-bezier(.2,.7,.2,1) .15s forwards,breathe 22s ease-in-out 2.75s infinite alternate}
+@keyframes reveal{to{transform:scale(1);filter:blur(0) brightness(1)}}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.035)}}
+.anim.open .sweep{animation:sweep 1.8s ease-in-out 2.6s forwards}
+@keyframes sweep{0%{opacity:0;background-position:120% 0}20%{opacity:1}100%{opacity:0;background-position:-30% 0}}
+.anim.open .hero > *,.anim.open .logo-btn,.anim.open .scroll-cue{animation:up 1s cubic-bezier(.2,.7,.2,1) forwards}
+.anim.open .wordmark{animation-delay:1.3s}
+.anim.open .links{animation-delay:1.75s}
+.anim.open .copy{animation-delay:1.95s}
+.anim.open .logo-btn{animation-delay:2.1s}
+.anim.open .scroll-cue{animation-delay:2.6s}
+.anim.open .wordmark .script{animation:write 1.4s cubic-bezier(.5,0,.3,1) 1.9s forwards}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes write{to{clip-path:inset(0 -10% 0 0)}}
+
+@media (max-aspect-ratio:4/5){
+  .bg{background-position:30% 22%}
+  .shade{background:linear-gradient(to top,rgba(13,8,23,.88),rgba(13,8,23,.35) 45%,rgba(13,8,23,0) 65%)}
+  .scroll-cue{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .veil{display:none}
+  .anim .bg,.anim.open .bg{animation:none;transform:none;filter:none}
+  .anim .hero > *,.anim .logo-btn,.anim .scroll-cue{opacity:1!important;animation:none!important}
+  .anim .wordmark .script{clip-path:none;animation:none!important}
+  .sweep{display:none}
+  .scroll-cue i,.mark *{animation:none}
+}
+
+/* ---------- 인트로 다음 영역 (자리만) ---------- */
+.next{padding-block:96px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:linear-gradient(var(--night),var(--plum))}
+.next .in{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.next .eyebrow{font-size:12px;letter-spacing:.3em;color:var(--lilac)}
+.next h2{margin:0;font-family:var(--f-serif);font-weight:600;font-size:clamp(34px,5vw,56px)}
+.next p{margin:0;max-width:680px;color:var(--muted);line-height:1.8;font-size:17px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="bfGlow" gradientUnits="userSpaceOnUse" cx="85" cy="64" r="80"><stop offset="0" stop-color="#C2A8F0"/><stop offset=".45" stop-color="#E2D6F7"/><stop offset="1" stop-color="#EAE0F8"/></radialGradient>
+    <g id="wingR">
+      <path d="M88 48 C92 30 108 12 132 8 C152 5 170 14 172 30 C174 46 160 58 136 64 C116 68 100 66 90 62 Z"/>
+      <path d="M90 64 C104 66 126 70 138 82 C148 94 140 108 126 112 C116 114 106 110 100 106 L98 117 L95 105 C90 96 89 80 89 66 Z"/>
+    </g>
+    <g id="bfBody">
+      <ellipse cx="85" cy="72" rx="3.4" ry="28" fill="#D9C8F5"/>
+      <circle cx="85" cy="44" r="4.2" fill="#D9C8F5"/>
+      <path d="M83 41 C79 30 74 20 69 12 M87 41 C91 30 96 20 101 12" fill="none" stroke="#EAE0F8" stroke-width="2.6" stroke-linecap="round"/>
+    </g>
+  </defs>
+</svg>
+
+<main>
+  <section class="intro" id="intro" aria-label="INAB Shop">
+    <div class="bg" role="img" aria-label="보라색 헤드폰을 쓴 버추얼 캐릭터와 고양이 인형"></div>
+    <div class="shade" aria-hidden="true"></div>
+    <div class="sweep" aria-hidden="true"></div>
+
+    <a class="logo-btn" href="#intro" aria-label="INAB 처음으로">
+      <svg viewBox="0 0 170 120" aria-hidden="true">
+        <g fill="url(#bfGlow)"><use href="#wingR"/><use href="#wingR" transform="translate(170 0) scale(-1 1)"/></g>
+        <use href="#bfBody"/>
+      </svg>
+    </a>
+
+    <div class="hero">
+      <h1 class="wordmark" aria-label="INAB Shop">
+        <span class="inab" aria-hidden="true">INAB<span class="script">Inab</span></span>
+        <span class="shop" aria-hidden="true">Shop</span>
+      </h1>
+      <div class="links">
+        <a class="cta" href="#portfolio">포트폴리오 보기
+          <svg viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="icon" href="#" target="_blank" rel="noopener" data-todo aria-label="아트머그"><img src="ic-artmug.png" alt=""></a>
+        <a class="icon" href="#" target="_blank" rel="noopener" data-todo aria-label="X"><img src="ic-x.png" alt=""></a>
+        <a class="icon" href="#" target="_blank" rel="noopener" data-todo aria-label="디스코드"><img src="ic-discord.png" alt=""></a>
+      </div>
+      <p class="copy">
+        <strong>표정과 움직임, 헤어의 결까지 설계합니다.</strong>
+        <span>버추얼 캐릭터의 인상과 감정을 세심하게 완성합니다.</span>
+      </p>
+    </div>
+
+    <a class="scroll-cue" href="#portfolio">SCROLL<i aria-hidden="true"></i></a>
+
+    <div class="veil" id="veil" aria-hidden="true" hidden>
+      <div class="mark">
+        <div class="ring">
+          <svg viewBox="0 0 170 120">
+            <g class="wr" fill="url(#bfGlow)"><use href="#wingR"/></g>
+            <g class="wl" fill="url(#bfGlow)"><use href="#wingR" transform="translate(170 0) scale(-1 1)"/></g>
+            <use href="#bfBody"/>
+          </svg>
+        </div>
+        <div class="name">INAB</div>
+        <div class="bar"><b id="bar"></b></div>
+      </div>
+      <button class="skip" id="skip" type="button">건너뛰기</button>
+    </div>
+  </section>
+
+  <section class="next" id="portfolio" aria-labelledby="pf-h">
+    <div class="in">
+      <span class="eyebrow">PORTFOLIO</span>
+      <h2 id="pf-h">Portfolio</h2>
+      <p>인트로 다음에 이어질 포트폴리오 영역 자리입니다. 작업 이미지와 설명을 받으면 이곳에 구성합니다.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var intro=document.getElementById('intro'), veil=document.getElementById('veil'), bar=document.getElementById('bar');
+  document.querySelectorAll('[data-todo]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault()})});
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  intro.classList.add('anim'); veil.hidden=false;
+  var opened=false;
+  function open(){
+    if(opened) return; opened=true;
+    bar.style.transform='scaleX(1)';
+    intro.classList.add('open');
+    setTimeout(function(){veil.hidden=true},1400);
+  }
+  var img=new Image(), loaded=false, minTime=false;
+  function tryOpen(){ if(loaded&&minTime) open() }
+  img.onload=img.onerror=function(){loaded=true;tryOpen()};
+  img.src='bg.webp';
+  requestAnimationFrame(function(){bar.style.transform='scaleX(.6)'});
+  setTimeout(function(){minTime=true;tryOpen()},1600);
+  setTimeout(open,6000);
+  document.getElementById('skip').addEventListener('click',open);
+})();
+</script>
+</body>
+</html>
