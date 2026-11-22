@@ -53,10 +53,10 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 .logo-btn:hover{filter:drop-shadow(0 0 12px rgba(236,230,243,.6))}
 
 /* 왼쪽 아래 카피 */
-.hero{position:absolute;z-index:2;left:max(calc(105 * var(--u)),20px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));
-  bottom:calc(max(calc(48 * var(--u)),24px) + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-start}
+.hero{position:absolute;z-index:2;left:max(calc(106 * var(--u)),20px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));
+  bottom:calc(max(calc(50 * var(--u)),24px) + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-start}
 
-.wordmark{position:relative;margin:0;font-weight:400;font-family:var(--f-serif);font-size:calc(150 * var(--u));line-height:.82;
+.wordmark{position:relative;margin:0 0 0 calc(-4 * var(--u));font-weight:400;font-family:var(--f-serif);font-size:calc(150 * var(--u));line-height:.82;
   display:flex;flex-wrap:wrap;align-items:baseline;column-gap:calc(42 * var(--u))}
 .wordmark .w{display:inline-block;-webkit-background-clip:text;background-clip:text;color:transparent;filter:url(#innerHi);
   /* 글자가 줄 높이보다 위로 솟는 부분까지 색이 칠해지도록 여유를 주고, 위치는 그대로 유지 */
@@ -68,10 +68,11 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 /* Inabi(Amanda #784fbb): PSD에서 내보낸 PNG를 원래 위치에 */
 .wordmark .script{position:absolute;z-index:1;left:calc(-32 * var(--u));top:calc(-11.5 * var(--u));width:calc(447 * var(--u));height:auto;max-width:none;pointer-events:none}
 
-.links{display:flex;align-items:center;gap:calc(30 * var(--u));flex-wrap:wrap;margin-top:calc(38 * var(--u))}
+.links{display:flex;align-items:center;gap:calc(30 * var(--u));flex-wrap:wrap;margin-top:calc(24 * var(--u))}
+.links .cta{margin-right:calc(6 * var(--u))}
 /* 포트폴리오 보기: #6d48b3 + 내부 그림자(흰색 25%, 1px, 135°) + 그레이디언트 오버레이(오버레이 10%) */
 .cta{display:inline-flex;align-items:center;gap:calc(14 * var(--u));text-decoration:none;color:var(--text);font-weight:700;
-  font-size:max(13px,calc(19 * var(--u)));height:max(38px,calc(50 * var(--u)));padding:0 max(18px,calc(30 * var(--u)));border-radius:999px;
+  font-size:max(13px,calc(19 * var(--u)));height:max(38px,calc(50 * var(--u)));width:max(152px,calc(200 * var(--u)));justify-content:center;padding:0;border-radius:999px;
   background-color:var(--purple);background-image:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,0));background-blend-mode:overlay;
   box-shadow:inset 1px 1px 0 rgba(255,255,255,.25);transition:filter .2s,transform .2s}
 .cta:hover{filter:brightness(1.12);transform:translateY(-1px)}
@@ -81,17 +82,18 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
   background-color:var(--text);background-image:linear-gradient(135deg,rgba(101,70,159,0),rgba(101,70,159,.10));
   box-shadow:inset 1px 1px 0 rgba(255,255,255,.25);transition:transform .2s,filter .2s}
 .icon:hover{transform:translateY(-1px);filter:drop-shadow(0 0 10px rgba(236,230,243,.5))}
-.icon i{position:absolute;inset:24%;background:var(--deep);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
-.icon.art i{inset:19%;--m:url(ic-artmug.png)}
-.icon.x i{inset:27%;--m:url(ic-x.png)}
-.icon.dc i{inset:24%;--m:url(ic-discord.png)}
+/* 원본 기준: 원 50px 안에 아이콘 높이 20px, 가운데 정렬 */
+.icon i{position:absolute;left:50%;top:50%;height:40%;transform:translate(-50%,-50%);background:var(--deep);-webkit-mask:var(--m) center/100% 100% no-repeat;mask:var(--m) center/100% 100% no-repeat}
+.icon.art i{width:46.6%;--m:url(ic-artmug.png)}
+.icon.x i{width:44.4%;--m:url(ic-x.png)}
+.icon.dc i{width:52.6%;--m:url(ic-discord.png)}
 
 /* 문구 2줄: 페이퍼로지 #ece6f3 + 그레이디언트 오버레이(표준 25%, #6d48b3, 아래쪽) */
-.copy{margin:calc(30 * var(--u)) 0 0;display:flex;flex-direction:column;gap:calc(12 * var(--u))}
+.copy{margin:calc(34 * var(--u)) 0 0;display:flex;flex-direction:column;gap:calc(5 * var(--u))}
 .copy span{display:inline-block;width:fit-content;-webkit-background-clip:text;background-clip:text;color:transparent;
   background-image:linear-gradient(to bottom,rgba(109,72,179,0),rgba(109,72,179,.25)),linear-gradient(var(--text),var(--text))}
-.copy .l1{font-weight:700;font-size:max(16px,calc(26 * var(--u)));letter-spacing:-.01em}
-.copy .l2{font-weight:500;font-size:max(12px,calc(17 * var(--u)))}
+.copy .l1{font-weight:700;font-size:max(17px,calc(30 * var(--u)));letter-spacing:-.01em}
+.copy .l2{font-weight:500;font-size:max(12px,calc(20 * var(--u)))}
 
 .scroll-cue{position:absolute;z-index:2;right:calc(max(calc(40 * var(--u)),18px) + env(safe-area-inset-right,0px));bottom:calc(max(calc(48 * var(--u)),24px) + env(safe-area-inset-bottom,0px));
   display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:.3em;color:var(--text);text-decoration:none;writing-mode:vertical-rl;opacity:.8}
