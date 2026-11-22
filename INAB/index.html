@@ -180,6 +180,19 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 .acc .body p{margin:0 0 .6em}
 .acc .body ul{margin:0;padding-left:1.1em}
 
+/* 공지사항 목록: 분류 · 제목 · 날짜 */
+.acc.notice{border-top:0}
+.acc.notice details > summary{grid-template-columns:auto 1fr auto auto}
+.acc.notice time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.acc.notice .body p{margin:0 0 1em}
+.acc.notice .body p.h{margin:1.6em 0 .4em;color:var(--text);font-weight:700}
+.acc.notice .body p.h:first-child{margin-top:0}
+.acc .body a{color:#b9a2e6;word-break:break-all}
+@media (max-width:640px){
+  .acc.notice details > summary{grid-template-columns:auto 1fr auto;row-gap:6px}
+  .acc.notice time{grid-column:2;grid-row:2}
+  .acc.notice .chev{grid-column:3;grid-row:1 / span 2}
+}
 /* ---------- Selected Works ---------- */
 .works{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .work{display:flex;flex-direction:column;gap:14px;min-width:0}
@@ -375,7 +388,25 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
         <div class="t"><h2 id="notice-h">Notice</h2><span class="ko">공지사항</span></div>
         <span class="note">휴가 일정, 접수 안내, 문의 작성법을 이곳에 정리합니다.</span>
       </div>
-      <div class="ph" style="border-radius:18px;padding:48px 20px;margin-top:-16px"><div><img src="logo.png" alt="">등록된 공지가 없습니다.</div></div>
+      <ul class="acc notice">
+        <li><details>
+          <summary><span class="tag">중요</span><span class="title">의상, 헤어, 액세서리 추가 시 전달해 주셔야 할 신청 내용 예시</span><time datetime="2026-09-08">2026.09.08</time><i class="chev" aria-hidden="true"></i></summary>
+          <div class="body">
+            <p class="h">[옷]</p>
+            <p>Knit_Noise: <a href="https://booth.pm/ko/items/7899921" target="_blank" rel="noopener">https://booth.pm/ko/items/7899921</a><br>유령옷: <a href="https://booth.pm/ko/items/8155460" target="_blank" rel="noopener">https://booth.pm/ko/items/8155460</a></p>
+            <p class="h">[헤어]</p>
+            <p>땋은머리: <a href="https://booth.pm/ko/items/8727562" target="_blank" rel="noopener">https://booth.pm/ko/items/8727562</a></p>
+            <p>뚜따할 때 넣으시는 제품(옷, 헤어, 액세서리 등)은 컬러 사진을 전달해 주신 후 따로 설명도 덧붙여 주세요!</p>
+            <p>Knit_Noise: 검정으로 넣어 주세요!<br>유령옷: 핑크에 찢어진 의상으로 해 주시되, 수영복은 검정으로 해 주세요!<br>(상점 페이지에서 원하시는 컬러의 사진도 동봉해서 보내 주세요!)</p>
+            <p>넣으시는 모든 제품의 구매 인증 사진<br>(사진 첨부)</p>
+            <p>포트폴리오 비공개를 하시나요? → 아니요!</p>
+            <p class="h">[옷장 추가]</p>
+            <p>Knit_Noise: 모자 X / 헤드셋 X / 허리 카디건 X<br>유령옷: 베일 X / 입 유령 X</p>
+            <p class="h">[기타 사항]</p>
+            <p>땋은머리에서 당근과 토끼 귀는 삭제해 주세요!</p>
+          </div>
+        </details></li>
+      </ul>
     </div>
   </section>
 
