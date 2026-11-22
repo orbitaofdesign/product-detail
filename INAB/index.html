@@ -180,18 +180,30 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 .acc .body p{margin:0 0 .6em}
 .acc .body ul{margin:0;padding-left:1.1em}
 
-/* 공지사항 목록: 분류 · 제목 · 날짜 */
-.acc.notice{border-top:0}
-.acc.notice details > summary{grid-template-columns:auto 1fr auto auto}
-.acc.notice time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* 공지사항: 기존 사이트와 같은 밝은 카드형 (누르면 펼쳐짐) */
+.acc.notice{margin-top:-8px;gap:16px}
+.acc.notice li{border:0}
+.acc.notice details{border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#f7f2fd,#fdfcff 140px);box-shadow:inset 0 0 0 1px #a585e0,0 10px 30px rgba(0,0,0,.25)}
+.acc.notice details > summary{grid-template-columns:auto 1fr auto auto;gap:14px;padding:22px 28px}
+.acc.notice details[open] > summary{border-bottom:1px solid #ebe4f5}
+.acc.notice .tag{font-size:12px;padding:5px 12px;background:#6d48b3;color:#fff;box-shadow:none}
+.acc.notice .title{color:#1f1a26;font-size:18px;font-weight:700}
+.acc.notice details:hover .title{color:#1f1a26}
+.acc.notice time{font-size:13px;color:#7a7385;font-variant-numeric:tabular-nums;white-space:nowrap}
+.acc.notice .chev{border-color:#7a7385}
+.acc.notice .body{max-width:none;padding:24px 28px 30px;color:#55505e;font-size:15px;line-height:1.85}
 .acc.notice .body p{margin:0 0 1em}
-.acc.notice .body p.h{margin:1.6em 0 .4em;color:var(--text);font-weight:700}
+.acc.notice .body p:last-child{margin-bottom:0}
+.acc.notice .body p.h{margin:1.6em 0 .4em;color:#3a3442;font-weight:500}
 .acc.notice .body p.h:first-child{margin-top:0}
+.acc.notice .body a{color:#6d48b3;word-break:break-all}
 .acc .body a{color:#b9a2e6;word-break:break-all}
 @media (max-width:640px){
-  .acc.notice details > summary{grid-template-columns:auto 1fr auto;row-gap:6px}
+  .acc.notice details > summary{grid-template-columns:auto 1fr auto;row-gap:6px;padding:18px 18px}
   .acc.notice time{grid-column:2;grid-row:2}
   .acc.notice .chev{grid-column:3;grid-row:1 / span 2}
+  .acc.notice .title{font-size:16px}
+  .acc.notice .body{padding:20px 18px 24px}
 }
 /* ---------- Selected Works ---------- */
 .works{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
