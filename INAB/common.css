@@ -1,4 +1,4 @@
-/* INAB Shop 공통: 폰트, 색, 상단 메뉴, 섹션, 푸터 */
+/* INAB Studio 공통: 폰트, 색, 상단 메뉴, 섹션, 푸터 */
 @font-face{font-family:"Cafe24 ClassicType";src:url(fonts/Cafe24ClassicType-latin.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Paperlogy";src:url(fonts/Paperlogy-4Regular.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Paperlogy";src:url(fonts/Paperlogy-5Medium.woff2) format("woff2");font-weight:500;font-display:swap}
@@ -68,7 +68,7 @@ img{max-width:100%}
 .foot .in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 28px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
 .foot .brand{font-size:18px}
 .foot .brand img{width:28px;height:28px}
-.foot .links{display:flex;gap:16px;flex-wrap:wrap}
+.foot .links{display:flex;gap:16px;flex-wrap:wrap;margin-top:0}
 .foot .links a{color:var(--muted);text-decoration:none}
 .foot .links a:hover{color:var(--text)}
 

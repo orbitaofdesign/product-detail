@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>INAB Shop</title>
+<title>INAB Studio</title>
 <meta name="description" content="표정과 움직임, 헤어의 결까지 설계합니다. 버추얼 캐릭터의 인상과 감정을 세심하게 완성합니다.">
 <link rel="preload" href="fonts/Cafe24ClassicType-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="common.css?v=202611221824">
+<link rel="stylesheet" href="common.css?v=202611231739">
 <style>
 @font-face{font-family:"Cafe24 ClassicType";src:url(fonts/Cafe24ClassicType-latin.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Paperlogy";src:url(fonts/Paperlogy-4Regular.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -17,7 +17,7 @@
 /* PSD(1920×1080) 수치를 그대로 쓰기 위한 단위: 1u = 화면에서 PSD 1px */
 :root{
   --text:#ece6f3;      /* INAB, 버튼·문구 글자, 아이콘 버튼 */
-  --purple:#6d48b3;    /* Shop, 포트폴리오 버튼, 문구 그라데이션 */
+  --purple:#6d48b3;    /* Studio, 포트폴리오 버튼, 문구 그라데이션 */
   --deep:#65469f;      /* 방사형 그라데이션, 아이콘 색 */
   --script:#784fbb;    /* Inabi 필기체 */
   --night:#15101c;     /* 배경 아래로 이어지는 바탕색 */
@@ -64,7 +64,7 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
   padding:.22em .06em .14em;margin:-.22em -.06em -.14em}
 /* INAB: #ece6f3 + 그레이디언트 오버레이(표준 10%, #65469f→투명, 135°) + 내부 그림자 */
 .wordmark .inab{background-image:linear-gradient(135deg,rgba(101,70,159,.10),rgba(101,70,159,0)),linear-gradient(var(--text),var(--text))}
-/* Shop: #6d48b3 + 그레이디언트 오버레이(오버레이 10%, 흰색, -45° 반전) + 내부 그림자 */
+/* Studio: #6d48b3 + 그레이디언트 오버레이(오버레이 10%, 흰색, -45° 반전) + 내부 그림자 */
 .wordmark .shop{background-image:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,0)),linear-gradient(var(--purple),var(--purple));background-blend-mode:overlay,normal;letter-spacing:-.03em}
 /* Inabi(Amanda #784fbb): PSD에서 내보낸 PNG를 원래 위치에 */
 .wordmark .script{position:absolute;z-index:1;left:calc(-32 * var(--u));top:calc(-11.5 * var(--u));width:calc(447 * var(--u));height:auto;max-width:none;pointer-events:none}
@@ -370,7 +370,7 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 
 <header class="topnav hide" id="topnav">
   <div class="in">
-    <a class="brand" href="#intro"><img src="logo.png" alt=""><span>INAB <em>Shop</em></span></a>
+    <a class="brand" href="#intro"><img src="logo.png" alt=""><span>INAB <em>Studio</em></span></a>
     <nav aria-label="주요 메뉴"><ul>
       <li><a class="link" href="#notice">공지사항</a></li>
       <li><a class="link" href="#profile">작가 프로필</a></li>
@@ -718,7 +718,7 @@ html,body{margin:0;overflow-x:clip;background:var(--night);color:var(--text);fon
 
 <footer class="foot">
   <div class="in">
-    <a class="brand" href="#intro"><img src="logo.png" alt=""><span>INAB <em>Shop</em></span></a>
+    <a class="brand" href="#intro"><img src="logo.png" alt=""><span>INAB <em>Studio</em></span></a>
     <nav class="links" aria-label="바로가기"><a href="#inquiry">커미션 문의서</a><a href="#pricing">가격 안내</a><a href="#faq">FAQ</a></nav>
     <span>© 2026 INAB. Virtual Character Production Artist.</span>
   </div>
